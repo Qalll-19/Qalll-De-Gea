@@ -1,0 +1,203 @@
+/* Custom Space Theme Styles & Animations */
+
+/* Glassmorphism Floating Navbar with Blue Glow Effect */
+.floating-navbar {
+  background: rgba(8, 14, 29, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 
+    0 0 25px rgba(56, 189, 248, 0.3),
+    0 8px 32px rgba(2, 6, 23, 0.7),
+    inset 0 0 15px rgba(56, 189, 248, 0.15);
+  animation: navbar-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes navbar-glow {
+  0% {
+    box-shadow: 
+      0 0 20px rgba(56, 189, 248, 0.25),
+      0 8px 30px rgba(2, 6, 23, 0.7),
+      inset 0 0 10px rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+  100% {
+    box-shadow: 
+      0 0 35px rgba(56, 189, 248, 0.45),
+      0 10px 40px rgba(2, 6, 23, 0.8),
+      inset 0 0 20px rgba(59, 130, 246, 0.25);
+    border-color: rgba(56, 189, 248, 0.55);
+  }
+}
+
+/* Nav Link Active State */
+.nav-link.active {
+  color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+/* Typewriter Cursor Blinking */
+.typewriter-cursor {
+  animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #38bdf8;
+  }
+}
+
+/* Keyframes for Rotations & Slow Pulses */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 26s linear infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+.animate-pulse-slower {
+  animation: pulse-slow 12s ease-in-out infinite reverse;
+}
+
+/* Stat Card Glow Effect */
+.stat-card {
+  position: relative;
+}
+
+.stat-card .stat-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.stat-card:hover .stat-glow {
+  opacity: 1;
+}
+
+/* Custom Scrollbar for Outer Space Feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8;
+}
+
+/* =========================================================
+   COSMIC CURSOR FOLLOWER
+========================================================= */
+.cosmic-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #38bdf8;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px #38bdf8, 0 0 20px #00f2fe;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  will-change: transform;
+}
+
+.cosmic-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(56, 189, 248, 0.65);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4), inset 0 0 8px rgba(56, 189, 248, 0.2);
+  transition: opacity 0.3s ease, width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background-color 0.25s ease;
+  opacity: 0;
+  will-change: transform;
+}
+
+/* Hover state on clickable elements */
+.cosmic-cursor-ring.cursor-hover {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(56, 189, 248, 0.95);
+  background-color: rgba(56, 189, 248, 0.12);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), inset 0 0 12px rgba(56, 189, 248, 0.3);
+}
+
+.cosmic-cursor-dot.cursor-hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 12px #ffffff, 0 0 22px #38bdf8;
+}
+
+/* Click state */
+.cosmic-cursor-ring.cursor-active {
+  transform: translate(-50%, -50%) scale(0.85);
+  background-color: rgba(56, 189, 248, 0.25);
+}
+
+@media (pointer: coarse) {
+  .cosmic-cursor-dot,
+  .cosmic-cursor-ring {
+    display: none !important;
+  }
+}
